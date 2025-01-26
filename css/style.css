@@ -853,6 +853,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   transition: .9s;
 }
 
+
+
 /* Facts Section
 --------------------------------*/
 
@@ -1061,13 +1063,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #clients img {
   max-width: 100%;
-  opacity: 0.5;
+  opacity: 1;
   transition: 0.3s;
   padding: 15px 0;
 }
 
 #clients img:hover {
-  opacity: 1;
+  opacity: 0.5;
 }
 
 #clients .owl-nav,
@@ -1088,6 +1090,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 #clients .owl-dot.active {
   background-color: #18d26e;
 }
+
+
 
 /* Testimonials Section
 --------------------------------*/
