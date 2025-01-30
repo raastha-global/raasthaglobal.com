@@ -27,68 +27,76 @@
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
-  <style>
+<style>
+    /* Default navbar style */
     .navbar-custom {
-      background: rgba(255, 255, 255, 0.4); /*linear-gradient(135deg, #1e3c72, #2a5298);*/
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      box-shadow:0 8px 15px rgba(0, 0, 0, 0.6);
-      position: relative;
-      z-index: 10;
-      margin: 1rem auto;
-      width: calc(100% - 2rem);
+        background: white; /* Solid white on page load */
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6);
+        position: relative;
+        z-index: 10;
+        margin: 1rem auto;
+        width: calc(100% - 2rem);
+        transition: background 0.3s ease; /* Smooth transition */
     }
+
+    /* Transparent state when scrolling */
+    .navbar-transparent {
+        background: rgba(255, 255, 255, 0.4); /* Transparent white */
+    }
+
+    /* Navbar links */
     .navbar-custom .nav-link {
-      color: white;
-      font-weight: 600;
-      text-transform: uppercase;
-      margin: 0 15px;
-      transition: color 0.3s, transform 0.2s;
+        color: black; /* Change to black for better visibility on white background */
+        font-weight: 600;
+        text-transform: uppercase;
+        margin: 0 15px;
+        transition: color 0.3s, transform 0.2s;
     }
+
     .navbar-custom .nav-link:hover {
-      color: #000000;
-      transform: scale(1.1);
+        color: #000000;
+        transform: scale(1.1);
     }
+
+    /* Navbar brand (logo) */
     .navbar-brand img {
-      height: 50px;
+        height: 50px;
     }
+
+    /* Navbar toggler (for mobile) */
     .navbar-toggler {
-      border: none;
+        border: none;
     }
+
     .navbar-toggler-icon {
-      background-color: rgb(162, 54, 54);
-      border-radius: 5px;
-      padding: 5px;
+        background-color: rgb(162, 54, 54);
+        border-radius: 5px;
+        padding: 5px;
     }
+
+    /* Dropdown menu */
     .dropdown-menu {
-      background: #2a2a72;
-      border: none;
-      border-radius: 10px;
+        background: #2a2a72;
+        border: none;
+        border-radius: 10px;
     }
+
     .dropdown-item {
-      color: white;
+        color: white;
     }
+
     .dropdown-item:hover {
-      background: #009ffd;
-      color: #ffcc00;
+        background: #009ffd;
+        color: #ffcc00;
     }
+
+    /* Navbar container */
     .navbar-container {
-      position: relative;
+        position: relative;
     }
-    /* .navbar-container::before {
-      content: "";
-      position: absolute;
-      top: -10px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to right, #ffffff, #ffffff,0.3);
-      border-radius: 50px;
-      z-index: -1;
-      transform: scale(1);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    } */
-  </style>
+</style>
 </head>
 
 <body>
