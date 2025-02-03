@@ -1,816 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>BizPage Bootstrap Template</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raastha Global - Evolution in Progress</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A192F;
+            --accent: #64FFDA;
+            --text: #CCD6F6;
+        }
+        
+        body {
+            margin: 0;
+            background: var(--primary);
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text);
+            overflow: hidden;
+        }
 
-  <!-- Favicons -->
-  <link href="img/intro-carousel/logo Raastha-03.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+        .logo {
+            width: 200px;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
 
-  <!-- Bootstrap CSS File -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            background: linear-gradient(45deg, var(--text), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-  <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        .message {
+            font-size: 1.2rem;
+            max-width: 600px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
 
-  <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+        .binary-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.1;
+        }
 
-  <style>
-    .navbar-custom {
-      background: rgba(255, 255, 255, 0.4); /*linear-gradient(135deg, #1e3c72, #2a5298);*/
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      box-shadow:0 8px 15px rgba(0, 0, 0, 0.6);
-      position: relative;
-      z-index: 10;
-      margin: 1rem auto;
-      width: calc(100% - 2rem);
-    }
-    .navbar-custom .nav-link {
-      color: white;
-      font-weight: 600;
-      text-transform: uppercase;
-      margin: 0 15px;
-      transition: color 0.3s, transform 0.2s;
-    }
-    .navbar-custom .nav-link:hover {
-      color: #000000;
-      transform: scale(1.1);
-    }
-    .navbar-brand img {
-      height: 50px;
-    }
-    .navbar-toggler {
-      border: none;
-    }
-    .navbar-toggler-icon {
-      background-color: rgb(162, 54, 54);
-      border-radius: 5px;
-      padding: 5px;
-    }
-    .dropdown-menu {
-      background: #2a2a72;
-      border: none;
-      border-radius: 10px;
-    }
-    .dropdown-item {
-      color: white;
-    }
-    .dropdown-item:hover {
-      background: #009ffd;
-      color: #ffcc00;
-    }
-    .navbar-container {
-      position: relative;
-    }
-    /* .navbar-container::before {
-      content: "";
-      position: absolute;
-      top: -10px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to right, #ffffff, #ffffff,0.3);
-      border-radius: 50px;
-      z-index: -1;
-      transform: scale(1);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    } */
-  </style>
+        .drone-container {
+            position: absolute;
+            width: 200px;
+            height: auto;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        #drone-gif {
+            width: 100%;
+            height: auto;
+            filter: hue-rotate(180deg) brightness(1.2);
+            background: transparent;
+        }
+
+        .loading-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            width: 50%;
+            height: 100%;
+            background: var(--accent);
+            animation: loading 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes loading {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+    </style>
 </head>
-
 <body>
-
-  <!--==========================
-    Header
-  ============================-->
-  <header id="header">
-    <div class="navbar-container">
-      <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#intro">
-            <img src="img/intro-carousel/logo Raastha-02.png" alt="raastha logo" title="Raastha">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#intro">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#about">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#services">Services</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#portfolio">Portfolio</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#clients">Clients</a>
-              </li>
-              <!-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Drop Down
-                </a> -->
-                <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Drop Down 1</a></li>
-                  <li><a class="dropdown-item" href="#">Drop Down 3</a></li>
-                  <li><a class="dropdown-item" href="#">Drop Down 4</a></li>
-                  <li><a class="dropdown-item" href="#">Drop Down 5</a></li>
-                </ul> -->
-              <!-- </li> -->
-              <li class="nav-item">
-                <a class="nav-link" href="#contact">Contact</a>
-              </li>
-            </ul>
-          </div>
+    <div class="container">
+        <img src="img/intro-carousel/logo Raastha-03.png" alt="Raastha Global" class="logo">
+        <h1 class="title">Evolution in Progress</h1>
+        <p class="message">Witness the fusion of Business Excellence and Artificial Intelligence. Our legacy of strategic branding meets the future of AI innovation.</p>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
         </div>
-      </nav>
-    </div>
-  </header><!-- #header -->
-
-  <!--==========================
-    Intro Section
-  ============================-->
-  <section id="intro">
-    <div class="intro-container">
-      <div id="introCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-
-        <ol class="carousel-indicators"></ol>
-
-        <div class="carousel-inner" role="listbox">
-
-          <div class="carousel-item active">
-            <div class="carousel-background"><img src="img/intro-carousel/iStock-1349640220.jpg" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Your Gateway to Excellence</h2>
-                <p>We specialize in transforming visions into reality. From branding brilliance to cutting-edge web solutions, we empower businesses to shine and succeed. Let us guide you to extraordinary growth.</p>
-                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="carousel-background"><img src="img/intro-carousel/cosmic-light-trails-3840x2160-20467.jpg" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Innovate, Inspire, Impact</h2>
-                <p>Unlock your brand's potential with our innovative strategies. We create impactful video ads, sleek web designs, and dynamic apps that leave lasting impressions.</p>
-                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="carousel-background"><img src="img/intro-carousel/3.jpg" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Designs That Speak Volumes</h2>
-                <p>Our graphic designs are more than visuals; they are stories that resonate with your audience. Let us craft the perfect narrative for your brand.</p>
-                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="carousel-background"><img src="img/intro-carousel/4.jpg" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Social Media, Elevated</h2>
-                <p>Our social media strategies are designed to amplify your presence, engage your audience, and drive results. Step into the spotlight with us.</p>
-                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="carousel-background"><img src="img/intro-carousel/5.jpg" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Empowering Your Success</h2>
-                <p>Our comprehensive consultancy services are designed to make your business thrive. From branding to execution, we’re with you at every step.</p>
-                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
-              </div>
-            </div>
-          </div>
-
+        <div class="drone-container">
+            <img id="drone-gif" src="img/intro-carousel/Animation - 1738611504224.gif" alt="Drone Animation">
         </div>
-
-        <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-
-        <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-
-      </div>
-    </div>
-  </section><!-- #intro -->
-
-  <main id="main">
-
-   <!--==========================
-      Featured Services Section
-    ============================-->
-<section id="featured-services">
-  <div class="container">
-    <div class="row">
-
-      <div class="col-lg-4 box">
-        <i class="ion-ios-bookmarks-outline"></i>
-        <h4 class="title"><a href="">Creative Branding</a></h4>
-        <p class="description">We craft unique brand identities that make your business stand out and connect with your audience effectively.</p>
-      </div>
-
-      <div class="col-lg-4 box box-bg">
-        <i class="ion-ios-stopwatch-outline"></i>
-        <h4 class="title"><a href="">Dynamic Video Ads</a></h4>
-        <p class="description">Engaging video ads designed to captivate your audience and drive results across platforms.</p>
-      </div>
-
-      <div class="col-lg-4 box">
-        <i class="ion-ios-heart-outline"></i>
-        <h4 class="title"><a href="">Social Media Mastery</a></h4>
-        <p class="description">We manage your social media presence to amplify your brand and foster meaningful engagement.</p>
-      </div>
-
-    </div>
-  </div>
-</section><!-- #featured-services -->
-
-<!--==========================
-      About Us Section
-    ============================-->
-<section id="about">
-  <div class="container">
-
-    <header class="section-header">
-      <h3>About Us</h3>
-      <p>We are a team of creative thinkers and problem-solvers dedicated to providing cutting-edge solutions in branding, marketing, and technology. Let us help bring your vision to life.</p>
-    </header>
-
-    <div class="row about-cols">
-
-      <div class="col-md-4 wow fadeInUp">
-        <div class="about-col">
-          <div class="img">
-            <img src="img/about-mission.jpg" alt="" class="img-fluid">
-            <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
-          </div>
-          <h2 class="title"><a href="#">Our Mission</a></h2>
-          <p>
-            To empower businesses by delivering innovative solutions that enhance brand value, drive customer engagement, and foster growth.
-          </p>
-        </div>
-      </div>
-
-      <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="about-col">
-          <div class="img">
-            <img src="img/about-plan.jpg" alt="" class="img-fluid">
-            <div class="icon"><i class="ion-ios-list-outline"></i></div>
-          </div>
-          <h2 class="title"><a href="#">Our Plan</a></h2>
-          <p>
-            Our strategy revolves around creating tailored solutions that align with your business goals, ensuring seamless execution and measurable outcomes.
-          </p>
-        </div>
-      </div>
-
-      <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
-        <div class="about-col">
-          <div class="img">
-            <img src="img/about-vision.jpg" alt="" class="img-fluid">
-            <div class="icon"><i class="ion-ios-eye-outline"></i></div>
-          </div>
-          <h2 class="title"><a href="#">Our Vision</a></h2>
-          <p>
-            To be the go-to consultancy firm for businesses aiming to thrive in a competitive market through innovation and creativity.
-          </p>
-        </div>
-      </div>
-
+        <canvas id="binaryRain" class="binary-rain"></canvas>
     </div>
 
-  </div>
-</section><!-- #about -->
-
-<!--==========================
-      Services Section
-    ============================-->
-<section id="services">
-  <div class="container">
-
-    <header class="section-header wow fadeInUp">
-      <h3>Our Services</h3>
-      <p>We offer a comprehensive range of services tailored to meet your business needs and achieve exceptional results.</p>
-    </header>
-
-    <div class="row">
-
-      <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
-        <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
-        <h4 class="title"><a href="">Branding & Identity</a></h4>
-        <p class="description">Strategic branding services that define your identity and resonate with your audience.</p>
-      </div>
-      <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
-        <div class="icon"><i class="ion-ios-videocam-outline"></i></div>
-        <h4 class="title"><a href="">Video Ad Production</a></h4>
-        <p class="description">High-quality video ads that tell your story and captivate your target market.</p>
-      </div>
-      <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
-        <div class="icon"><i class="ion-ios-desktop-outline"></i></div>
-        <h4 class="title"><a href="">Web & App Development</a></h4>
-        <p class="description">Cutting-edge web and mobile applications designed for user engagement and performance.</p>
-      </div>
-      <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
-        <div class="icon"><i class="ion-ios-color-wand-outline"></i></div>
-        <h4 class="title"><a href="">Graphic Design</a></h4>
-        <p class="description">Creative and impactful designs to elevate your brand's visual identity.</p>
-      </div>
-      <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
-        <div class="icon"><i class="ion-ios-people-outline"></i></div>
-        <h4 class="title"><a href="">Social Media Management</a></h4>
-        <p class="description">We handle your social media platforms to maximize engagement and visibility.</p>
-      </div>
-
-    </div>
-
-  </div>
-</section><!-- #services -->
-
-
-<!--==========================
-  Call To Action Section
-===========================-->
-<section id="call-to-action" class="wow fadeIn">
-  <div class="container text-center">
-    <h3>Partner with Us for Business Excellence</h3>
-    <p> Transform your business with our expert consultancy. Tailored solutions, actionable insights, and measurable growth await you.</p>
-    <a class="cta-btn" href="#contact">Get Started</a>
-  </div>
-</section><!-- #call-to-action -->
-
-<!--==========================
-  Skills Section
-===========================-->
-<!-- <section id="skills">
-  <div class="container">
-
-    <header class="section-header">
-      <h3>Our Expertise</h3>
-      <p>Delivering innovative, result-driven strategies to empower businesses across domains.</p>
-    </header>
-
-    <div class="skills-content">
-
-      <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
-          <span class="skill">Strategic Planning <i class="val">95%</i></span>
-        </div>
-      </div>
-
-      <div class="progress">
-        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-          <span class="skill">Market Analysis <i class="val">90%</i></span>
-        </div>
-      </div>
-
-      <div class="progress">
-        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-          <span class="skill">Operational Efficiency <i class="val">85%</i></span>
-        </div>
-      </div>
-
-      <div class="progress">
-        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-          <span class="skill">Financial Management <i class="val">80%</i></span>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section> -->
-
-<!--==========================
-  Facts Section
-===========================-->
-<section id="facts" class="wow fadeIn">
-  <div class="container">
-
-    <header class="section-header">
-      <h3>Our Achievements</h3>
-      <p>Quantifiable success that speaks volumes about our capabilities.</p>
-    </header>
-
-    <div class="row counters">
-
-      <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">14</span>
-        <p>Happy Clients</p>
-      </div>
-
-      <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">67</span>
-        <p>Projects Completed</p>
-      </div>
-
-      <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">3700</span>
-        <p>Consulting Hours</p>
-      </div>
-
-      <div class="col-lg-3 col-6 text-center">
-        <span data-toggle="counter-up">48</span>
-        <p>Industry Experts</p>
-      </div>
-
-    </div>
-
-    <!-- <div class="facts-img">
-      <img src="img/business-impact.png" alt="Business Impact" class="img-fluid">
-    </div> -->
-
-  </div>
-</section><!-- #facts -->
-
-<!--==========================
-  Portfolio Section
-===========================-->
-<!-- <section id="portfolio" class="section-bg">
-  <div class="container">
-
-    <header class="section-header">
-      <h3 class="section-title">Case Studies</h3>
-    </header>
-
-    <div class="row">
-      <div class="col-lg-12">
-        <ul id="portfolio-flters">
-          <li data-filter="*" class="filter-active">All</li>
-          <li data-filter=".filter-strategy">Strategy</li>
-          <li data-filter=".filter-finance">Finance</li>
-          <li data-filter=".filter-operations">Operations</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="row portfolio-container">
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-strategy wow fadeInUp">
-        <div class="portfolio-wrap">
-          <figure>
-            <img src="img/portfolio/strategy1.jpg" class="img-fluid" alt="">
-            <a href="img/portfolio/strategy1.jpg" data-lightbox="portfolio" data-title="Strategic Planning Success" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
-            <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-          </figure>
-
-          <div class="portfolio-info">
-            <h4><a href="#">Strategic Planning</a></h4>
-            <p>Strategy</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-finance wow fadeInUp" data-wow-delay="0.1s">
-        <div class="portfolio-wrap">
-          <figure>
-            <img src="img/portfolio/finance1.jpg" class="img-fluid" alt="">
-            <a href="img/portfolio/finance1.jpg" class="link-preview" data-lightbox="portfolio" data-title="Financial Management Excellence" title="Preview"><i class="ion ion-eye"></i></a>
-            <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-          </figure>
-
-          <div class="portfolio-info">
-            <h4><a href="#">Financial Management</a></h4>
-            <p>Finance</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-operations wow fadeInUp" data-wow-delay="0.2s">
-        <div class="portfolio-wrap">
-          <figure>
-            <img src="img/portfolio/operations1.jpg" class="img-fluid" alt="">
-            <a href="img/portfolio/operations1.jpg" class="link-preview" data-lightbox="portfolio" data-title="Operational Excellence" title="Preview"><i class="ion ion-eye"></i></a>
-            <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-          </figure>
-
-          <div class="portfolio-info">
-            <h4><a href="#">Operational Excellence</a></h4>
-            <p>Operations</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section> -->
-
-<!--==========================
-  Clients Section
-===========================-->
-<section id="clients" class="wow fadeInUp">
-  <div class="container">
-
-    <header class="section-header">
-      <h3>Trusted by Industry Leaders</h3>
-    </header>
-
-    <div class="owl-carousel clients-carousel">
-      <!-- <img src="img/clients/trellicore.jpg" alt="" style="width: 100px;"> -->
-      <img src="img/clients/trellicore_square.jpg" alt="" style="width: 100px;">
-      <img src="img/clients/stellar_square.jpg" alt="" style="width: 100px;">
-      <img src="img/clients/pennyflow.jpg" alt=""   style="width: 100px;">  
-      <img src="img/clients/Untitled.png" alt="" style="width: 100px;" >
-      <!-- <img src="img/clients/client-7.png" alt=""  style="width: 100px;">
-      <img src="img/clients/client-8.png" alt="" style="width: 100px;"> -->
-    </div>
-
-  </div>
-</section><!-- #clients -->
-<!--==========================
-  Clients Section
-============================-->
-<section id="testimonials" class="section-bg wow fadeInUp">
-  <div class="container">
-
-    <header class="section-header">
-      <h3>What Our Clients Say</h3>
-    </header>
-
-    <div class="owl-carousel testimonials-carousel">
-
-      <div class="testimonial-item">
-        <img src="img/testimonial-vaishnav.jpg" class="testimonial-img" alt="">
-        <h3>Vaishnav Raj</h3>
-        <h4>Co-founder &amp; COO , Pennyflo</h4>
-        <p>
-          <img src="img/quote-sign-left.png" class="quote-sign-left" alt="">
-          Working with Raastha Global has been a transformative experience. Their expertise and commitment to excellence are unparalleled, helping us achieve remarkable results.
-          <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
-        </p>
-      </div>
-
-      <div class="testimonial-item">
-        <!-- <img src="img/testimonial-2.jpg" class="testimonial-img" alt=""> -->
-        <h3>Sara Wilsson</h3>
-        <h4>Designer</h4>
-        <p>
-          <img src="img/quote-sign-left.png" class="quote-sign-left" alt="">
-          Raastha’s innovative solutions have exceeded my expectations. Their team is highly professional and approachable, making every collaboration seamless and enjoyable.
-          <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
-        </p>
-      </div>
-
-      <div class="testimonial-item">
-        <!-- <img src="img/testimonial-3.jpg" class="testimonial-img" alt=""> -->
-        <h3>Jena Karlis</h3>
-        <h4>Store Owner</h4>
-        <p>
-          <img src="img/quote-sign-left.png" class="quote-sign-left" alt="">
-          The team at Raastha brings exceptional value to every project. Their ability to understand our needs and deliver innovative solutions is unmatched.
-          <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
-        </p>
-      </div>
-
-      <div class="testimonial-item">
-        <!-- <img src="img/testimonial-4.jpg" class="testimonial-img" alt=""> -->
-        <h3>Matt Brandon</h3>
-        <h4>Freelancer</h4>
-        <p>
-          <img src="img/quote-sign-left.png" class="quote-sign-left" alt="">
-          Choosing Raastha was the best decision for my business. Their team has an incredible eye for detail and a passion for delivering top-notch results.
-          <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
-        </p>
-      </div>
-
-      <div class="testimonial-item">
-        <!-- <img src="img/testimonial-5.jpg" class="testimonial-img" alt=""> -->
-        <h3>John Larson</h3>
-        <h4>Entrepreneur</h4>
-        <p>
-          <img src="img/quote-sign-left.png" class="quote-sign-left" alt="">
-          Raastha’s expertise has propelled my business to new heights. Their innovative strategies and dedicated support are second to none.
-          <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section><!-- #testimonials -->
-
-
-<!-- ==========================
-  Team Section
-============================-->
-<!-- <section id="team">
-  <div class="container">
-    <div class="section-header wow fadeInUp">
-      <h3>Our Team</h3>
-      <p>Meet the talented individuals driving innovation and success at Raastha.</p>
-    </div>
-
-    <div class="row">
-
-      <div class="col-lg-3 col-md-6 wow fadeInUp">
-        <div class="member">
-          <img src="img/team-1.jpg" class="img-fluid" alt="">
-          <div class="member-info">
-            <div class="member-info-content">
-              <h4>Walter White</h4>
-              <span>Chief Executive Officer</span>
-              <div class="social">
-                <a href=""><i class="fa fa-twitter"></i></a>
-                <a href=""><i class="fa fa-facebook"></i></a>
-                <a href=""><i class="fa fa-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="member">
-          <img src="img/team-2.jpg" class="img-fluid" alt="">
-          <div class="member-info">
-            <div class="member-info-content">
-              <h4>Sarah Johnson</h4>
-              <span>Product Manager</span>
-              <div class="social">
-                <a href=""><i class="fa fa-twitter"></i></a>
-                <a href=""><i class="fa fa-facebook"></i></a>
-                <a href=""><i class="fa fa-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-        <div class="member">
-          <img src="img/team-3.jpg" class="img-fluid" alt="">
-          <div class="member-info">
-            <div class="member-info-content">
-              <h4>William Anderson</h4>
-              <span>Chief Technology Officer</span>
-              <div class="social">
-                <a href=""><i class="fa fa-twitter"></i></a>
-                <a href=""><i class="fa fa-facebook"></i></a>
-                <a href=""><i class="fa fa-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-        <div class="member">
-          <img src="img/team-4.jpg" class="img-fluid" alt="">
-          <div class="member-info">
-            <div class="member-info-content">
-              <h4>Amanda Jepson</h4>
-              <span>Finance Manager</span>
-              <div class="social">
-                <a href=""><i class="fa fa-twitter"></i></a>
-                <a href=""><i class="fa fa-facebook"></i></a>
-                <a href=""><i class="fa fa-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>#team -->
-
-<!--==========================
-  Contact Section
-============================-->
-<section id="contact" class="section-bg wow fadeInUp">
-  <div class="container">
-
-    <div class="section-header">
-      <h3>Contact Raastha</h3>
-      <p>We’d love to hear from you! Feel free to reach out for any inquiries or collaborations.</p>
-    </div>
-
-    <div class="row contact-info">
-
-      <div class="col-md-4">
-        <div class="contact-address">
-          <i class="ion-ios-location-outline"></i>
-          <h3>Address</h3>
-          <address>University Road, South Kalamassery, Kochi</address>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="contact-phone">
-          <i class="ion-ios-telephone-outline"></i>
-          <h3>Phone Number</h3>
-          <p><a href="tel:+1234567890">+91 6238385845</a></p>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="contact-email">
-          <i class="ion-ios-email-outline"></i>
-          <h3>Email</h3>
-          <p><a href="mailto:contact@raastha.com">office@raasthaglobal.com</a></p>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="form">
-      <div id="sendmessage">Your message has been sent. Thank you!</div>
-      <div id="errormessage"></div>
-      <form action="" method="post" role="form" class="contactForm">
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required />
-          </div>
-          <div class="form-group col-md-6">
-            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required />
-          </div>
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required />
-        </div>
-        <div class="form-group">
-          <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-        </div>
-        <div class="text-center"><button type="submit">Send Message</button></div>
-      </form>
-    </div>
-
-  </div>
-</section><!-- #contact -->
-
-<!--==========================
-  Footer
-============================-->
-<footer id="footer">
-  <div class="container">
-    <div class="copyright">
-      &copy; Copyright <strong>Raastha</strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      Designed by <a href="raasthaglobal.com">Raastha Global</a>
-    </div>
-  </div>
-</footer><!-- #footer -->
-
-
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-  <!-- Uncomment below i you want to use a preloader -->
-  <!-- <div id="preloader"></div> -->
-
-  <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/superfish/hoverIntent.js"></script>
-  <script src="lib/superfish/superfish.min.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/waypoints/waypoints.min.js"></script>
-  <script src="lib/counterup/counterup.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/isotope/isotope.pkgd.min.js"></script>
-  <script src="lib/lightbox/js/lightbox.min.js"></script>
-  <script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
-  <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
-
-  <!-- Template Main Javascript File -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-  <script src="js/main.js"></script>
-
+    <script>
+        // Binary Rain Animation
+        const binaryRain = document.getElementById('binaryRain');
+        const ctx = binaryRain.getContext('2d');
+        binaryRain.width = window.innerWidth;
+        binaryRain.height = window.innerHeight;
+
+        const binary = '10';
+        const fontSize = 14;
+        const columns = binaryRain.width/fontSize;
+        const drops = [];
+
+        for(let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function drawBinaryRain() {
+            ctx.fillStyle = 'rgba(10, 25, 47, 0.05)';
+            ctx.fillRect(0, 0, binaryRain.width, binaryRain.height);
+            ctx.fillStyle = '#64FFDA';
+            ctx.font = fontSize + 'px monospace';
+
+            for(let i = 0; i < drops.length; i++) {
+                const text = binary.charAt(Math.floor(Math.random() * binary.length));
+                ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+                if(drops[i]*fontSize > binaryRain.height && Math.random() > 0.975)
+                    drops[i] = 0;
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawBinaryRain, 33);
+
+        // Drone Animation
+        let animationProgress = 0;
+        const animationDuration = 12000;
+        const drone = document.querySelector('.drone-container');
+
+        function updateDroneAnimation() {
+            const t = (animationProgress % animationDuration) / animationDuration;
+            
+            let left, top, scale, rotate;
+            if (t <= 0.25) {
+                const segmentT = t / 0.25;
+                left = -5 + 35 * segmentT;
+                top = 20 + 50 * segmentT;
+                scale = 1 + 0.2 * segmentT;
+                rotate = 15 * segmentT;
+            } else if (t <= 0.5) {
+                const segmentT = (t - 0.25) / 0.25;
+                left = 30 + 40 * segmentT;
+                top = 70 - 40 * segmentT;
+                scale = 1.2 - 0.2 * segmentT;
+                rotate = 15 - 30 * segmentT;
+            } else if (t <= 0.75) {
+                const segmentT = (t - 0.5) / 0.25;
+                left = 70 + 20 * segmentT;
+                top = 30 + 30 * segmentT;
+                scale = 1 + 0.2 * segmentT;
+                rotate = -15 + 25 * segmentT;
+            } else {
+                const segmentT = (t - 0.75) / 0.25;
+                left = 90 - 95 * segmentT;
+                top = 60 - 40 * segmentT;
+                scale = 1.2 - 0.2 * segmentT;
+                rotate = 10 - 10 * segmentT;
+            }
+
+            drone.style.left = `${left}%`;
+            drone.style.top = `${top}%`;
+            drone.style.transform = `scale(${scale}) rotate(${rotate}deg)`;
+
+            animationProgress += 16;
+            requestAnimationFrame(updateDroneAnimation);
+        }
+
+        updateDroneAnimation();
+    </script>
 </body>
 </html>
